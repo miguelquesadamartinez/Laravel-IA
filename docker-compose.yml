@@ -1,0 +1,45 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    ports:
+      - "8092:80"
+    volumes:
+      - .:/var/www/html:cached
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: laravel-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: laravel-phpmyadmin
+    ports:
+      - "8093:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: laravel
+      PMA_PASSWORD: secret
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
