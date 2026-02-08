@@ -39,7 +39,14 @@ class ChatGptController extends Controller
             ]);
 
         if (!$response->successful()) {
-            $errorMessage = $response->json('error.message') ?? 'No se pudo completar la solicitud.';
+            $apiError = $response->json('error.message') ?? '';
+            $isQuotaError = str_contains(strtolower($apiError), 'quota')
+                || str_contains(strtolower($apiError), 'billing')
+                || str_contains(strtolower($apiError), 'plan');
+
+            $errorMessage = $isQuotaError
+                ? 'Usa tu llave de OpenAI en el .env.'
+                : ($apiError ?: 'No se pudo completar la solicitud.');
 
             return back()->withErrors([
                 'query' => $errorMessage,
