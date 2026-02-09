@@ -41,9 +41,50 @@
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
-                    <x-nav-link :href="route('chatgpt.index')" :active="request()->routeIs('chatgpt.*')">
-                        {{ __('ChatGPT') }}
-                    </x-nav-link>
+                    @php
+                        $aiActive = request()->routeIs('ai.*');
+                        $aiClasses = $aiActive
+                            ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition ease-in-out duration-150'
+                            : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150';
+                    @endphp
+
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" class="{{ $aiClasses }} h-16">
+                                {{ __('IA') }}
+                                <svg class="ms-2 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('ai.index', 'openai')">
+                                {{ __('OpenAI') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'anthropic')">
+                                {{ __('Anthropic') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'gemini')">
+                                {{ __('Gemini') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'groq')">
+                                {{ __('Groq') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'xai')">
+                                {{ __('xAI') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'deepseek')">
+                                {{ __('DeepSeek') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'mistral')">
+                                {{ __('Mistral') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('ai.index', 'ollama')">
+                                {{ __('Ollama') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
 
@@ -108,8 +149,32 @@
             <x-responsive-nav-link :href="route('users.create')" :active="request()->routeIs('users.create')" class="ps-6">
                 {{ __('Nuevo') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('chatgpt.index')" :active="request()->routeIs('chatgpt.*')">
-                {{ __('ChatGPT') }}
+            <div class="px-3 pt-2 text-xs font-semibold uppercase text-gray-500">
+                {{ __('IA') }}
+            </div>
+            <x-responsive-nav-link :href="route('ai.index', 'openai')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'openai'" class="ps-6">
+                {{ __('OpenAI') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'anthropic')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'anthropic'" class="ps-6">
+                {{ __('Anthropic') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'gemini')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'gemini'" class="ps-6">
+                {{ __('Gemini') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'groq')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'groq'" class="ps-6">
+                {{ __('Groq') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'xai')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'xai'" class="ps-6">
+                {{ __('xAI') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'deepseek')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'deepseek'" class="ps-6">
+                {{ __('DeepSeek') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'mistral')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'mistral'" class="ps-6">
+                {{ __('Mistral') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ai.index', 'ollama')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'ollama'" class="ps-6">
+                {{ __('Ollama') }}
             </x-responsive-nav-link>
         </div>
 

@@ -15,7 +15,7 @@ Proyecto Laravel con gestión completa de usuarios (CRUD) y autenticación, más
 ## Requisitos
 
 - Docker y Docker Compose.
-- (Opcional, local sin Docker) PHP 8.3+, Composer y Node.js.
+- (Opcional, local sin Docker) PHP 8.4+, Composer y Node.js.
 
 ## Inicio rápido con Docker
 
@@ -75,16 +75,32 @@ Funciones:
 
 Solo usuarios autenticados pueden acceder.
 
-## Búsqueda en ChatGPT
+## Búsqueda en IA (Laravel AI SDK)
 
-Nuevo menú: ChatGPT
+Nuevo menú: IA
 
-Ruta principal: /chatgpt
+Rutas principales:
 
-Configura en tu .env:
+- /ai/openai
+- /ai/anthropic
+- /ai/gemini
+- /ai/groq
+- /ai/xai
+- /ai/deepseek
+- /ai/mistral
+- /ai/ollama
+
+Configura en tu .env las llaves del proveedor que vayas a usar:
 
 - OPENAI_API_KEY
-- OPENAI_MODEL (opcional, por defecto gpt-4o-mini)
+- ANTHROPIC_API_KEY
+- GEMINI_API_KEY
+- GROQ_API_KEY
+- XAI_API_KEY
+- DEEPSEEK_API_KEY
+- MISTRAL_API_KEY
+- OLLAMA_API_KEY (opcional)
+- OLLAMA_BASE_URL (opcional)
 
 ## Estructura relevante
 
@@ -103,11 +119,10 @@ Si trabajas con Docker:
 
 - docker compose exec app composer require laravel/ai
 
-Después, configura las claves del proveedor de IA en tu .env según el proveedor que vayas a usar.
+Publicar configuración y migraciones:
 
-Publicar configuración (opcional):
-
-- php artisan vendor:publish --tag=laravel-ai
+- php artisan vendor:publish --provider="Laravel\\Ai\\AiServiceProvider"
+- php artisan migrate
 
 ## Notas
 

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ChatGptController;
+use App\Http\Controllers\AiSearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +14,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/chatgpt', [ChatGptController::class, 'index'])->name('chatgpt.index');
-    Route::post('/chatgpt', [ChatGptController::class, 'search'])->name('chatgpt.search');
+    Route::get('/ai/{provider}', [AiSearchController::class, 'index'])
+        ->whereIn('provider', ['openai', 'anthropic', 'gemini', 'groq', 'xai', 'deepseek', 'mistral', 'ollama'])
+        ->name('ai.index');
+    Route::post('/ai/{provider}', [AiSearchController::class, 'search'])
+        ->whereIn('provider', ['openai', 'anthropic', 'gemini', 'groq', 'xai', 'deepseek', 'mistral', 'ollama'])
+        ->name('ai.search');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
