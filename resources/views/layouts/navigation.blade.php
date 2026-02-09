@@ -85,6 +85,12 @@
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
+
+                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <x-nav-link :href="route('multi-search.index')" :active="request()->routeIs('multi-search.*')">
+                            {{ __('Multi Búsqueda') }}
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
 
@@ -175,6 +181,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('ai.index', 'ollama')" :active="request()->routeIs('ai.*') && request()->route('provider') === 'ollama'" class="ps-6">
                 {{ __('Ollama') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('multi-search.index')" :active="request()->routeIs('multi-search.*')">
+                {{ __('Multi Búsqueda') }}
             </x-responsive-nav-link>
         </div>
 

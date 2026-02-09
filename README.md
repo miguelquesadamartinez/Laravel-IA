@@ -75,7 +75,26 @@ Funciones:
 
 Solo usuarios autenticados pueden acceder.
 
-## Búsqueda en IA (Laravel AI SDK)
+## Multi Búsqueda (NUEVO) 🚀
+
+Esta es la funcionalidad estrella del proyecto. Permite realizar una única consulta que se envía **simultáneamente** a múltiples inteligencias artificiales configuradas para contrastar información.
+
+### Características:
+
+1.  **Consulta Unificada**: Escribe tu pregunta una sola vez.
+2.  **Ejecución Paralela**: El sistema consulta a todos los proveedores disponibles (OpenAI, Anthropic, Gemini, Groq, etc.) al mismo tiempo.
+3.  **Análisis Interligente**:
+    - Si las IAs responden correctamente, se recopilan todas las respuestas.
+    - **Gemini** actúa como "Juez/Analista": Recibe todas las respuestas y genera una **conclusión final verificada**.
+    - Detecta automáticamente **contradicciones factuales** entre las diferentes IAs.
+    - El análisis se centra en la veracidad y consistencia de los datos, no en el estilo.
+4.  **Gestión de Errores**: Si una IA no está configurada o falla, el sistema lo notifica pero muestra los resultados de las que sí funcionaron.
+
+### Ruta:
+
+- `/multi-search`
+
+## Búsqueda Individual IA
 
 Nuevo menú: IA
 
