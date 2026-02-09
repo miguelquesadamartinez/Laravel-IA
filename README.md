@@ -118,8 +118,23 @@ Configura en tu .env las llaves del proveedor que vayas a usar:
 - XAI_API_KEY
 - DEEPSEEK_API_KEY
 - MISTRAL_API_KEY
-- OLLAMA_API_KEY (opcional)
-- OLLAMA_BASE_URL (opcional)
+
+### Ollama (Local)
+
+**Ollama es diferente**: Es un servidor de IA que se ejecuta localmente en tu máquina. No requiere API Key pero sí instalación y ejecución previa.
+
+#### Pasos para usar Ollama:
+
+1. **Instalar Ollama**: Descarga desde [ollama.ai](https://ollama.ai)
+2. **Ejecutar Ollama**: Una vez instalado, simplemente ejecuta `ollama serve` en una terminal
+3. **Descargar un modelo**: Por ejemplo, `ollama pull llama2`
+4. **Configurar .env** (opcional):
+    ```
+    OLLAMA_BASE_URL=http://localhost:11434
+    OLLAMA_MODEL=llama2
+    ```
+
+Si no tienes Ollama instalado o no está corriendo, simplemente aparecerá como "no disponible" en Multi Búsqueda.
 
 ## Estructura relevante
 

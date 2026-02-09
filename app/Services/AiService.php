@@ -207,7 +207,7 @@ class AiService
             ]);
 
         if (!$response->successful()) {
-            throw new \Exception('Error al llamar a Ollama');
+            throw new \Exception('Ollama no está disponible. Asegúrate de que esté instalado y corriendo (ollama serve).');
         }
 
         return $response->json('response');

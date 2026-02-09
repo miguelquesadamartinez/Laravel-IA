@@ -31,7 +31,7 @@
 
                     @if(isset($summary))
                         <div class="mb-8 border-b pb-8">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4 bg-yellow-100 p-2 rounded">Resumen y Análisis de Contradicciones (por Gemini)</h3>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4 bg-yellow-100 p-2 rounded">Análisis Comparativo (por Groq)</h3>
                             <div class="prose max-w-none text-gray-800 bg-gray-50 p-4 rounded-lg">
                                 {!! nl2br(e($summary)) !!}
                             </div>
