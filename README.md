@@ -75,7 +75,7 @@ Funciones:
 
 Solo usuarios autenticados pueden acceder.
 
-## Multi Búsqueda (NUEVO) 🚀
+## Multi Búsqueda 🚀
 
 Esta es la funcionalidad estrella del proyecto. Permite realizar una única consulta que se envía **simultáneamente** a múltiples inteligencias artificiales configuradas para contrastar información.
 
